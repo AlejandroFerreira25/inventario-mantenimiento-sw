@@ -1,10 +1,10 @@
 <?php
 class Conexion
 {
-    private $host = 'localhost';
-    private $db = 'inventario_est';
-    private $user = 'root';
-    private $pass = '';
+    private $host;
+    private $db;
+    private $user;
+    private $pass;
     private $dns;
     private $sql;
     private $conexion;
@@ -12,6 +12,23 @@ class Conexion
     private $resultadoAll;
     private $filasAfectadas;
     private $dato;
+
+    // HU-01: los datos de conexión se leen de Modelo/config.local.php,
+    // que cada integrante crea en su equipo y que el .gitignore no deja subir.
+    public function __construct()
+    {
+        $archivo = __DIR__ . '/config.local.php';
+        if (!file_exists($archivo)) {
+            throw new \RuntimeException(
+                'Falta Modelo/config.local.php. Copie Modelo/config.ejemplo.php con ese nombre y ponga sus datos de conexión.'
+            );
+        }
+        $cfg = require $archivo;
+        $this->host = $cfg['host'];
+        $this->db   = $cfg['db'];
+        $this->user = $cfg['user'];
+        $this->pass = $cfg['pass'];
+    }
 
     public function abrir()
     {
