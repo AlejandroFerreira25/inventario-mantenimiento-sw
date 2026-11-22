@@ -74,3 +74,10 @@ $(document).ready(function() {
         });
     }
 });
+
+// HU-03: filtra la tabla de productos por la columna "Producto" mientras se escribe.
+function inicializarBusquedaProductos(tabla) {
+    $('#buscarProducto').on('input', function() {
+        tabla.column(1).search(this.value.trim()).draw();
+    });
+}

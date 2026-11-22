@@ -90,6 +90,10 @@
                         <a href="index.php?accion=documentpdf"><button id="btnpdf"><img id="imgpdf" src="Vista/img/pdflogo.png" width="30" height="30"></button></a>
                     </div>                    
                     <div class="mb-3 bg-light">
+                        <!-- HU-03: búsqueda de productos por nombre -->
+                        <div class="d-flex justify-content-end p-2">
+                            <input type="search" id="buscarProducto" class="form-control w-auto" placeholder="Buscar producto por nombre..." aria-label="Buscar producto por nombre">
+                        </div>
                         <!-- Tabla de pedidos -->
                         <table id="tabla_productos" class="table table-bordered">
                             <thead class="thead-dark">
@@ -209,15 +213,22 @@
     <script src="Vista/js/productos.js"></script>
     <script>
         $(document).ready(function() {
-            $('#tabla_productos').DataTable({
+            var tabla = $('#tabla_productos').DataTable({
+                // HU-03: se oculta el buscador general de DataTables porque ahora se busca por nombre
+                "dom": "lrtip",
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+                },
+                "initComplete": function(settings) {
+                    // HU-03: mensaje cuando la búsqueda no encuentra productos
+                    settings.oLanguage.sZeroRecords = "Sin resultados";
                 },
                 "lengthMenu": [
                     [5, 10, 25, 50, -1],
                     [5, 10, 25, 50, "Todos"]
                 ]
             });
+            inicializarBusquedaProductos(tabla);
         });
     </script>
 </body>
