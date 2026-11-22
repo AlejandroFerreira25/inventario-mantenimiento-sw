@@ -1,0 +1,8 @@
+# Configuración local con credenciales (HU-01)
+Modelo/config.local.php
+# Archivos del editor y del sistema operativo
+.vscode/
+Thumbs.db
+# Copias comprimidas de librerías y registros
+Vista/lib/PHPMailer.zip
+*.log
