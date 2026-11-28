@@ -53,7 +53,39 @@ inventario-mantenimiento-sw/
 | HU-04 | Alerta de productos con existencias bajas | `feature/hu04-alerta-stock` | Edwin Cuervo |
 | HU-05 | Documentación del proyecto (este README) | `docs/hu05-readme` | Carlos Ferreira y Edwin Cuervo |
 
+## Flujo de trabajo colaborativo
+
+Para garantizar la integridad del código fuente, el equipo utiliza ramas independientes para cada historia de usuario y Pull Requests para integrar los cambios en la rama principal.
+
+### Configuración local del repositorio
+
+```bash
+git clone https://github.com/AlejandroFerreira25/inventario-mantenimiento-sw.git
+cd inventario-mantenimiento-sw
+git status
+git remote -v
+git branch -a
+```
+
+### Buenas prácticas de mantenimiento
+
+- Actualizar la rama principal antes de iniciar una modificación.
+- Trabajar en ramas independientes.
+- Realizar commits descriptivos asociados a cada historia de usuario.
+- Excluir credenciales y configuraciones locales mediante `.gitignore`.
+- Revisar los cambios mediante Pull Requests antes de integrarlos.
+- Validar las modificaciones funcionales en un entorno PHP y MySQL.
+
+### Trazabilidad de las contribuciones
+
+```bash
+git log --oneline --graph --all
+git shortlog -sn
+```
+
+Estos comandos permiten consultar el historial de cambios y las contribuciones de los integrantes del equipo.
+
 ## Integrantes
 
 - Carlos Alejandro Ferreira Giraldo ([@AlejandroFerreira25](https://github.com/AlejandroFerreira25))
-- Edwin Alexander Cuervo Cómbita
+- Edwin Alexander Cuervo Cómbita ([@eacuervoco](https://github.com/eacuervoco))
